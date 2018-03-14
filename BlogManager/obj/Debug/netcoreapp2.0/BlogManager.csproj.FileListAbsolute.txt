@@ -1,0 +1,11 @@
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\bin\Debug\netcoreapp2.0\BlogManager.deps.json
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\bin\Debug\netcoreapp2.0\BlogManager.runtimeconfig.json
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\bin\Debug\netcoreapp2.0\BlogManager.runtimeconfig.dev.json
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\bin\Debug\netcoreapp2.0\BlogManager.dll
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.csproj.CoreCompileInputs.cache
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.AssemblyInfoInputs.cache
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.AssemblyInfo.cs
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\bin\Debug\netcoreapp2.0\BlogManager.pdb
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.dll
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.pdb
+C:\Users\Nisvet\Desktop\BlogManager\BlogManager\obj\Debug\netcoreapp2.0\BlogManager.csprojResolveAssemblyReference.cache

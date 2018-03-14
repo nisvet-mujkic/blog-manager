@@ -1,0 +1,98 @@
+﻿@model Blog
+
+
+<div id="updateModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create / Edit Blog</h4>
+            </div>
+            <form id="forma2">
+
+                <input asp-for="Id" hidden />
+
+                <div id="errors">
+                    <ul></ul>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input asp-for="Title" placeholder="Title" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <textarea asp-for="Summary" class="form-control" rows="2" placeholder="Summary"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="editor2" asp-for="Content" class="form-control" rows="3" placeholder="Content"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class='input-group date dp'>
+                                <input type="text" asp-for="DateTime" value="Model.DateTime" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="hideModal" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btnSbt" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+        $('.dp').datetimepicker({
+            format: "hh:mm, DD MMM YYYY"
+        });
+
+    var quill = new Quill('#editor2', {
+        theme: 'snow'
+    });
+
+    $("#hideModal").click(function () {
+
+        if ($("#errors").hasClass("alert")) {
+            $("#errors").html("");
+            $("#errors").removeClass("alert alert-danger");
+        }
+    });
+
+    $("#btnSbt").click(function () {
+        if ($("#errors").hasClass("alert")) {
+            $("#errors").removeClass("alert alert-danger");
+        }
+
+        var forma = $("#forma2");
+        forma.append($("#UserId"));
+
+        $.ajax({
+            url: "@Url.Action("AddOrEdit", "Blogs")",
+            type: "POST",
+            data: forma.serialize() ,
+            success: function (data) {
+                if (data.success) {
+                    document.location.href = document.location.href;
+                } else {
+                    var validationErrors = data.errors;
+
+                    $("#errors").addClass("alert alert-danger");
+                    $("#errors ul").append("<li>" + validationErrors + "</li>");
+                }
+            }
+        })
+    })
+
+</script>
+

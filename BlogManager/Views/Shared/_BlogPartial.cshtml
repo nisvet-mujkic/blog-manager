@@ -1,0 +1,88 @@
+﻿@model Blog
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create / Edit Blog</h4>
+            </div>
+            <form id="forma">                
+
+                <div id="greske">
+                    <ul></ul>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <input asp-for="Title" placeholder="Title" class="form-control" />
+                    </div>
+
+                    <div class="form-group">
+                        <textarea asp-for="Summary" class="form-control" rows="2" placeholder="Summary"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="editor" asp-for="Content" class="form-control" rows="3" placeholder="Content"></textarea>
+                    </div>
+                                       
+                    <div class="form-group">
+                        <div class="form-group">
+                            <div class='input-group date dp'>
+                                <input type="text" asp-for="DateTime" class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalHide" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="btnSubmit" type="button" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+    $("#modalHide").click(function () {
+        if ($("#greske").hasClass("alert")) {
+            $("#greske").html("");
+            $("#greske").removeClass("alert alert-danger");
+        }
+    });
+
+    $("#btnSubmit").click(function () {
+        if ($("#greske").hasClass("alert")) {
+            $("#greske").removeClass("alert alert-danger");
+        }
+        var forma = $("#forma");
+        forma.append($("#UserId"));
+
+        $.ajax({
+            url: "@Url.Action("AddOrEdit", "Blogs")",
+            type: "POST",
+            data: forma.serialize() ,
+            success: function (data) {
+                if (data.success) {
+                    document.location.href = document.location.href;
+                } else {
+                    var validationErrors = data.errors;                    
+                    $("#greske").addClass("alert alert-danger");
+                    $("#greske ul").append("<li>" + validationErrors + "</li>");
+                }
+            }
+        })
+    })
+
+</script>
+

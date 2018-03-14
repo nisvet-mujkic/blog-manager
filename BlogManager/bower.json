@@ -1,0 +1,8 @@
+{
+  "name": "asp.net",
+  "private": true,
+  "dependencies": {
+    "font-awesome": ">=1.1.1",
+    "eonasdan-bootstrap-datetimepicker": ">=1.1.1"
+   }
+}
